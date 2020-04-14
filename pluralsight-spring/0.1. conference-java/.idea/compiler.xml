@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="0. conference" />
         <module name="conference" />
+        <module name="0. conference" />
+        <module name="conference-java" />
       </profile>
     </annotationProcessing>
   </component>
