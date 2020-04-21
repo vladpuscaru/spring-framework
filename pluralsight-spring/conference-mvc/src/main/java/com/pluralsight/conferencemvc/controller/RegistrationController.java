@@ -2,10 +2,12 @@ package com.pluralsight.conferencemvc.controller;
 
 import com.pluralsight.conferencemvc.model.Registration;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
@@ -17,8 +19,13 @@ public class RegistrationController {
     }
 
     @PostMapping("registration")
-    public String addRegistration(@ModelAttribute("registration") Registration registration) {
-        System.out.println(registration.getName());
+    public String addRegistration(@Valid @ModelAttribute("registration")
+                                              Registration registration, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "registration";
+        }
+
         return "redirect:registration"; // .jsp file
     }
 }
